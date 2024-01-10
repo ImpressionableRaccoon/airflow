@@ -22,7 +22,7 @@ from typing import Any
 
 import yandexcloud
 
-from airflow.exceptions import AirflowException, AirflowProviderDeprecationWarning
+from airflow.exceptions import AirflowProviderDeprecationWarning
 from airflow.hooks.base import BaseHook
 
 
@@ -168,10 +168,8 @@ class YandexCloudBaseHook(BaseHook):
         if service_account_key:
             return {"service_account_key": service_account_key}
 
-        raise AirflowException(
-            "No credentials are found in connection. Specify either service account "
-            "authentication JSON or user OAuth token in Yandex.Cloud connection"
-        )
+        self.log.info("using metadata service as credentials")
+        return {}
 
     def _get_endpoint(self) -> dict[str, str]:
         sdk_config = {}
