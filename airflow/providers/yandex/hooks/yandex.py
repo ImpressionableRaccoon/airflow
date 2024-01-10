@@ -50,14 +50,14 @@ class YandexCloudBaseHook(BaseHook):
                 lazy_gettext("Service account auth JSON"),
                 widget=BS3PasswordFieldWidget(),
                 description="Service account auth JSON. Looks like "
-                '{"id", "...", "service_account_id": "...", "private_key": "..."}. '
+                '{"id": "...", "service_account_id": "...", "private_key": "..."}. '
                 "Will be used instead of OAuth token and SA JSON file path field if specified.",
             ),
             "service_account_json_path": StringField(
                 lazy_gettext("Service account auth JSON file path"),
                 widget=BS3TextFieldWidget(),
                 description="Service account auth JSON file path. File content looks like "
-                '{"id", "...", "service_account_id": "...", "private_key": "..."}. '
+                '{"id": "...", "service_account_id": "...", "private_key": "..."}. '
                 "Will be used instead of OAuth token if specified.",
             ),
             "oauth": PasswordField(
@@ -117,7 +117,7 @@ class YandexCloudBaseHook(BaseHook):
 
     def __init__(
         self,
-        # Connection id is deprecated. Use yandex_conn_id instead
+        # connection_id is deprecated, use yandex_conn_id instead
         connection_id: str | None = None,
         yandex_conn_id: str | None = None,
         extras: dict | None = None,
