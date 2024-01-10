@@ -84,3 +84,12 @@ First, you need to create `OAuth token <https://cloud.yandex.com/en/docs/iam/con
 It will looks like ``y3_Vdheub7w9bIut67GHeL345gfb5GAnd3dZnf08FRbvjeUFvetYiohGvc``.
 
 Then you need to specify token in the ``OAuth Token`` field.
+
+Using metadata service
+~~~~~~~~~~~~~~~~~~~~~~
+
+If no credentials are specified, the connection will attempt to use
+the `metadata service <https://cloud.yandex.com/en/docs/compute/concepts/vm-metadata>`__ for authentication.
+
+To do this, you need to `link <https://cloud.yandex.ru/en/docs/compute/operations/vm-connect/auth-inside-vm>`__
+your service account with your VM.
