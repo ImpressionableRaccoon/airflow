@@ -120,6 +120,7 @@ class YandexCloudBaseHook(BaseHook):
         # Connection id is deprecated. Use yandex_conn_id instead
         connection_id: str | None = None,
         yandex_conn_id: str | None = None,
+        extras: dict | None = None,
         default_folder_id: str | None = None,
         default_public_ssh_key: str | None = None,
         default_service_account_id: str | None = None,
@@ -132,9 +133,12 @@ class YandexCloudBaseHook(BaseHook):
                 AirflowProviderDeprecationWarning,
                 stacklevel=2,
             )
-        self.connection_id = yandex_conn_id or connection_id or self.default_conn_name
-        self.connection = self.get_connection(self.connection_id)
-        self.extras = self.connection.extra_dejson
+        if extras:
+            self.extras = extras
+        else:
+            self.connection_id = yandex_conn_id or connection_id or self.default_conn_name
+            self.connection = self.get_connection(self.connection_id)
+            self.extras = self.connection.extra_dejson
         credentials = self._get_credentials()
         sdk_config = self._get_endpoint()
         self.sdk = yandexcloud.SDK(user_agent=self.provider_user_agent(), **sdk_config, **credentials)
