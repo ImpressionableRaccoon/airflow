@@ -29,5 +29,5 @@ Apache Hadoop is used for storing and analyzing structured and unstructured big 
 Apache Spark is a tool for quick data-processing that can be integrated with Apache Hadoop as well as with other storage systems.
 
 Using the operators
-^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^
 See the usage examples in `example DAGs <https://github.com/apache/airflow/tree/providers-yandex/|version|/tests/system/providers/yandex/example_yandexcloud_dataproc.py>`_
